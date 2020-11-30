@@ -14,7 +14,7 @@ trait Runways
             foreach (explode('/', (string)$cloud->NAME) as $item) {
                 preg_match_all('/^[0-9]*|[RL]/m', $item, $matches, PREG_SET_ORDER, 0);
                 $runway = [
-                    'name' => (string)$matches[0][0],
+                    'name' => (string)$item,
                     'pcn' => (string)$cloud->SFC,
                     'length' => (float)$cloud->LENGTH,
                     'width' => (float)$cloud->WIDTH,
