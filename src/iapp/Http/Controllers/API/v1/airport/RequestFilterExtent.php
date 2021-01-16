@@ -9,14 +9,15 @@ trait RequestFilterExtent
     {
         if ($request->minLon || $request->minLat || $request->maxLon || $request->maxLat) {
             $model->where( function ($query) use ($request) {
-                if ($request->minLon)
-                    $query->where('longitude', '>', $request->minLon);
-                if ($request->maxLon)
-                    $query->where('longitude', '<', $request->maxLon);
-                if ($request->minLat)
-                    $query->where('latitude', '>', $request->minLat);
-                if ($request->maxLat)
-                    $query->where('latitude', '<', $request->maxLat);
+                $start = (object) [
+                    'latitude' => round($request->minLat, 2),
+                    'longitude' => round($request->minLon, 2),
+                ];
+                $end = (object) [
+                    'latitude' => round($request->maxLat, 2),
+                    'longitude' => round($request->maxLon, 2),
+                ];
+                $query->whereRaw("(CASE WHEN $start->latitude < $end->latitude THEN latitude BETWEEN $start->latitude AND $end->latitude ELSE latitude BETWEEN $end->latitude AND $start->latitude END) AND (CASE WHEN $start->longitude < $end->longitude THEN longitude BETWEEN $start->longitude AND $end->longitude ELSE longitude BETWEEN $end->longitude AND $start->longitude END)");
             });
         }
     }
