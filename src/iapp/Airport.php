@@ -32,6 +32,11 @@ class Airport extends Model
         });
     }
 
+    public function getTitleAttribute()
+    {
+        return $this->icao ? strtoupper($this->icao): ucfirst($this->name);
+    }
+
     public function creator()
     {
         return $this->belongsTo(imodal('User'), 'creator_id', 'id');
@@ -64,6 +69,8 @@ class Airport extends Model
         $this->AirportRadioModel = imodal($this->AirportRadioModel);
         if (!$record) $record = $this;
         $request = \request();
+        if (is_array($request->radios) && count($request->radios) == 0) $record->radios()->delete();
+        if (is_array($request->runways) && count($request->runways) == 0) $record->runways()->delete();
         if ($request->radios && is_array($request->radios)) {
             $rdelete = $record->radios()->pluck('id')->toArray();
             foreach ($request->radios as $kradio => $radio) {
@@ -100,7 +107,6 @@ class Airport extends Model
         }
         return $request;
     }
-
 
     public static function findClosest($lon, $lat, $limit = 3)
     {
