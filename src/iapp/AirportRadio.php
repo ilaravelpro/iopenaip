@@ -11,7 +11,6 @@ class AirportRadio extends Model
     public static $s_prefix = 'IOAAR';
     public static $s_start = 810000;
     public static $s_end = 24299999;
-    protected $table = 'i_airport_radios';
 
     protected $guarded = [];
 

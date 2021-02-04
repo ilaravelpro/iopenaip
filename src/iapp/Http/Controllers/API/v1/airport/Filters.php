@@ -6,8 +6,6 @@ trait Filters
 {
     public function filters($request, $model, $parent = null, $operators = [])
     {
-        $filters = [];
-        $current = [];
         $filters = [
             [
                 'name' => 'all',
@@ -30,12 +28,6 @@ trait Filters
                 'type' => 'text'
             ],
         ];
-        $this->requestFilter($request, $model, $parent, $filters, $operators);
-        if ($request->q) {
-            $this->searchQ($request, $model, $parent);
-            $current['q'] = $request->q;
-        }
-        $this->requestFilterExtent($request, $model, $parent);
-        return [$filters, $current, $operators];
+        return [$filters, [], $operators];
     }
 }

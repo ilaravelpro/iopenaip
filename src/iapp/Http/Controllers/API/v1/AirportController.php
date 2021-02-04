@@ -20,10 +20,9 @@ class AirportController extends Controller
         Update,
         Destroy,
         Airport\Import,
-        Airport\Rules,
+        Airport\Except,
         Airport\RequestData,
         Airport\Filters,
-        Airport\SearchQ,
         Airport\RequestFilterExtent;
 
 }

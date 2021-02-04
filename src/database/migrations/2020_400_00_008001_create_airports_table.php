@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIAirportsTable extends Migration
+class CreateAirportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateIAirportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('i_airports', function (Blueprint $table) {
+        Schema::create('airports', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('creator_id')->nullable()->unsigned();
             $table->foreign('creator_id')->references('id')->on('users');
@@ -39,6 +39,6 @@ class CreateIAirportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('i_airports');
+        Schema::dropIfExists('airports');
     }
 }

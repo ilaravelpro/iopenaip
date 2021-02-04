@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIAirportRadiosTable extends Migration
+class CreateAirportRunwaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateIAirportRadiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('i_airport_radios', function (Blueprint $table) {
+        Schema::create('airport_runways', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('airport_id')->nullable()->unsigned();
             $table->foreign('airport_id')->references('id')->on('airports');
-            $table->string('category')->nullable();
-            $table->string('frequency')->nullable();
-            $table->string('type')->nullable();
-            $table->string('spec')->nullable();
-            $table->text('description')->nullable();
+            $table->string('name')->nullable();
+            $table->string('dir')->nullable();
+            $table->string('side')->nullable();
+            $table->string('pcn')->nullable();
+            $table->string('length')->nullable();
+            $table->string('width')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateIAirportRadiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('i_airport_radios');
+        Schema::dropIfExists('airport_radios');
     }
 }

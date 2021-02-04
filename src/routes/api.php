@@ -1,6 +1,6 @@
 <?php
 
-Route::namespace('v1')->prefix('v1/openaip')->group(function () {
+Route::namespace('v1')->prefix('v1/openaip')->middleware('auth:api')->group(function () {
     Route::get('handel/{country}/{section?}/{action?}', function ($country, $section = null, $action = null) {
         return ['data' => (new \iLaravel\iOpenAip\Vendor\OpenAip($country, $section, $action))->_get()];
     });

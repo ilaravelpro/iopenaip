@@ -7,6 +7,12 @@ trait RequestFilterExtent
 {
     public function requestFilterExtent($request, $model, $parent)
     {
+        $request->validate([
+            'minLat' => 'nullable|latitude',
+            'maxLat' => 'nullable|latitude',
+            'minLon' => 'nullable|longitude',
+            'maxLon' => 'nullable|longitude',
+        ]);
         if ($request->minLon || $request->minLat || $request->maxLon || $request->maxLat) {
             $model->where( function ($query) use ($request) {
                 $start = (object) [
