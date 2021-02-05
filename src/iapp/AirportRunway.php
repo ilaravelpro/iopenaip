@@ -1,4 +1,9 @@
 <?php
+/**
+ * Author: Amir Hossein Jahani | iAmir.net
+ * Last modified: 2/2/21, 6:40 AM
+ * Copyright (c) 2021. Powered by iamir.net
+ */
 
 namespace iLaravel\iOpenAip\iApp;
 

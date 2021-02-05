@@ -1,4 +1,9 @@
 <?php
+/**
+ * Author: Amir Hossein Jahani | iAmir.net
+ * Last modified: 11/29/20, 6:32 PM
+ * Copyright (c) 2021. Powered by iamir.net
+ */
 
 namespace iLaravel\iOpenAip\iApp\Http\Resources\Airport;
 use iLaravel\Core\iApp\Http\Resources\Resource;
