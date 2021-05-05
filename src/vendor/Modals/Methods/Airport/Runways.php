@@ -23,8 +23,8 @@ trait Runways
                     'length' => (float)$cloud->LENGTH,
                     'width' => (float)$cloud->WIDTH,
                 ];
-                $runway['dir'] = $matches[0][0] * 10;
-                if (isset($matches[1]))$runway['side'] = $matches[1][0] == 'R' ? 'right' : 'left';
+                $runway['mag_bearing'] = $matches[0][0] * 10;
+                if (isset($matches[1]))$runway['dir'] = $matches[1][0];
                 unset($runway['category']);
                 $cloud_array->push($runway);
                 unset($runway);

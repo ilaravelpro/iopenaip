@@ -23,8 +23,8 @@ class CreateAirportRunwaysTable extends Migration
             $table->bigInteger('airport_id')->nullable()->unsigned();
             $table->foreign('airport_id')->references('id')->on('airports');
             $table->string('name')->nullable();
+            $table->string('mag_bearing')->nullable();
             $table->string('dir')->nullable();
-            $table->string('side')->nullable();
             $table->string('pcn')->nullable();
             $table->string('length')->nullable();
             $table->string('width')->nullable();
