@@ -13,8 +13,10 @@
         }
     ],
     "autoload": {
+        "classmap": [
+            "src"
+        ],
         "psr-4": {
-            "App\\": "src/app/",
             "iLaravel\\iOpenAip\\": "src/"
         },
         "files": [

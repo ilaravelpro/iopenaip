@@ -30,7 +30,16 @@ class Airport extends Resource
                 'type' => 'Point',
                 'coordinates' => [(float)$this->longitude, (float)$this->latitude]
             ),
-            'properties' => array_merge(['geo_type' => 'flight_airports'], $this->toArray($request))
+            'properties' => [
+                'id' => $this->serial,
+                'title' => $this->name ? $this->name . ($this->icao ? " ($this->icao)" : "") : $this->title,
+                'name' => $this->name,
+                'icao' => $this->icao,
+                'iata' => $this->iata,
+                'longitude' => $this->longitude,
+                'latitude' => $this->latitude,
+                'geo_type' => 'flight_airports'
+            ]
         );
         return $feature;
     }
