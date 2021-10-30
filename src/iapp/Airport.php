@@ -145,7 +145,7 @@ class Airport extends Model
                     'longitude' => "nullable|longitude",
                     'latitude' => "nullable|latitude",
                     'country' => "nullable|country",
-                    "status" => "nullable|in:" . join(iconfig('status.airports', iconfig('status.global')), ','),
+                    "status" => "nullable|in:" . join(',', iconfig('status.airports', iconfig('status.global'))),
                 ], $additionalRules);
                 if ($arg == null || (isset($arg->icao) && $arg->icao != $request->icao)) $rules['icao'] .= '|unique:airports,icao';
                 if ($arg == null || (isset($arg->iata) && $arg->iata != $request->iata)) $rules['iata'] .= '|unique:airports,iata';
